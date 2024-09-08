@@ -31,7 +31,6 @@ Além disso, buscamos explorar a relação entre a popularidade de uma música e
 - Pandas
 - Matplotlib/Seaborn
 - APIs 
-- Bibliotecas de NLP (nltk, spacy)
 
 ## Dados utilizados:
 [Top 100 Songs and Lyrics from 1959 to 2019](https://www.kaggle.com/datasets/brianblakely/top-100-songs-and-lyrics-from-1959-to-2019?select=all_songs_data_processed.csv)
