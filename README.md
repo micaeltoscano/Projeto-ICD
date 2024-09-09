@@ -15,13 +15,13 @@ Este projeto tem como objetivo analisar os dados de uma pesquisa que investiga a
 
 ### Objetivos do Projeto
 1. Examinar as respostas emocionais a diferentes gêneros musicais: Identificar como diferentes estilos musicais afetam o humor e o estado mental dos ouvintes.
-2. **Analisar a frequência de escuta: Entender se a frequência com que uma pessoa ouve música está relacionada à sua saúde mental.
-3. **Explorar a música como ferramenta de enfrentamento: Investigar como a música é usada como um mecanismo de enfrentamento para lidar com o estresse, ansiedade ou depressão.
+2. Analisar a frequência de escuta: Entender se a frequência com que uma pessoa ouve música está relacionada à sua saúde mental.
+3. Explorar a música como ferramenta de enfrentamento: Investigar como a música é usada como um mecanismo de enfrentamento para lidar com o estresse, ansiedade ou depressão.
 
 ## Perguntas Iniciais
-1. **A música de certos gêneros é mais eficaz na melhora do bem-estar emocional?
-2. **Existe uma relação entre a quantidade de tempo que alguém passa ouvindo música e sua saúde mental?
-3. **Quais tipos de música são mais utilizados para lidar com sentimentos de tristeza ou ansiedade?
+1. A música de certos gêneros é mais eficaz na melhora do bem-estar emocional?
+2. Existe uma relação entre a quantidade de tempo que alguém passa ouvindo música e sua saúde mental?
+3. Quais tipos de música são mais utilizados para lidar com sentimentos de tristeza ou ansiedade?
 
 
 ## Ferramentas e Tecnologias
