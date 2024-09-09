@@ -31,5 +31,5 @@ Este projeto tem como objetivo analisar os dados de uma pesquisa que investiga a
 - APIs 
 
 ## Dados utilizados:
-[Music & Mental Health Survey Results]([https://www.kaggle.com/datasets/brianblakely/top-100-songs-and-lyrics-from-1959-to-2019?select=all_songs_data_processed.csv](https://www.kaggle.com/datasets/catherinerasgaitis/mxmh-survey-results))
+[Music & Mental Health Survey Results](https://www.kaggle.com/datasets/catherinerasgaitis/mxmh-survey-results)
 
