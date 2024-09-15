@@ -46,13 +46,14 @@ def exibir_boxplot(ds, coluna, orientacao, titulo):
     plt.title(titulo)
     plt.show()
 
-def boxplot_de_varias(ds, titulo, tamanho_x, tamanho_y, *colunas):
+def boxplot_de_varias(ds, titulo, tamanho_x, tamanho_y, legenda, *colunas):
     
     plt.figure(figsize=(tamanho_x, tamanho_y))
     sns.boxplot(data = ds[list(colunas)])
 
     plt.xticks(rotation=45,ha='right', va='top')  
     plt.title(titulo)
+    plt.figtext(0.93, 0.5, legenda, va='center', ha='left', fontsize=10)
     plt.show()
 
 
