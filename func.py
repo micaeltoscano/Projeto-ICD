@@ -2,22 +2,21 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-#Como as colunas eram Object, não iriam aparecer quando fóssemos usar o describe(), por exemplo, então essa função "alterar_type" muda o tipo da coluna além de converter os valores para 0,1,2,3. O único parâmetro dela é o dataset.
-
-def alterar_type(ds):
+def alterar_type(dataset):
+    #A funcão converte dados categóricos em numéricos e ajusta o tipo de dado das colunas para evitar o tipo object, facilitando análises estatística
 
     #Criando as listas que armazenam o nome das colunas com o tipo Object
     colunas_yes_no = []
     colunas_frequencia = []
     
-    for coluna in ds.columns:
+    for coluna in dataset.columns:
         # Verificando se todos os valores da coluna são Yes ou No.
-        if ds[coluna].dropna().isin(['Yes', 'No']).all():  #Obs: Usando dropna para tirar valores NaN que interferem no resultado.
+        if dataset[coluna].dropna().isin(['Yes', 'No']).all():  #Obs: Usando dropna para tirar valores NaN que interferem no resultado.
             if coluna not in colunas_yes_no: #Adicionando apenas nomes únicos nas listas.
                 colunas_yes_no.append(coluna)
                 
         # Verificando se todos os valores da coluna são 'Never', 'Rarely', 'Sometimes', 'Very frequently'
-        if ds[coluna].dropna().isin(['Never', 'Rarely', 'Sometimes', 'Very frequently']).all():
+        if dataset[coluna].dropna().isin(['Never', 'Rarely', 'Sometimes', 'Very frequently']).all():
             if coluna not in colunas_frequencia:
                 colunas_frequencia.append(coluna)
     
@@ -27,29 +26,32 @@ def alterar_type(ds):
     
     # Aplicando o mapeamento para 'Yes'/'No' e convertendo para float
     for col in colunas_yes_no:
-        ds[col] = ds[col].map(mapeamento_yes_no).astype(float)
+        dataset[col] = dataset[col].map(mapeamento_yes_no).astype(float)
     
     for col in colunas_frequencia:
-        ds[col] = ds[col].map(mapeamento_frequencia).astype(float)
+        dataset[col] = dataset[col].map(mapeamento_frequencia).astype(float)
 
-#Função para exibir os bloxplots. ds = dataset, coluna = nome da coluna, orientação = h para horizontal e v para vertical, titulo = nome do titulo. (Posso fazer um tratamento caso o usuário digite outra coisa, mas no momento não é necessário)
-def exibir_boxplot(ds, coluna, orientacao, titulo):
+def exibir_boxplot(dataset, coluna, orientacao, titulo):
+
+    #Função para exibir os bloxplots. ds = dataset, coluna = nome da coluna, orientação = "h" para horizontal e "v" para vertical, titulo = nome do titulo. 
 
     if (orientacao == "h"):
-        sns.boxplot(x=ds[coluna], orient = orientacao)
-        plt.xlabel('')
+        sns.boxplot(x=dataset[coluna], orient = orientacao)
+        plt.xlabel('') 
 
     elif (orientacao == "v"):
-        sns.boxplot(y =ds[coluna], orient= orientacao)
+        sns.boxplot(y =dataset[coluna], orient= orientacao)
         plt.ylabel('')
 
     plt.title(titulo)
     plt.show()
 
-def boxplot_de_varias(ds, titulo, tamanho_x, tamanho_y, legenda, *colunas):
+def boxplot_de_varias(dataset, titulo, tamanho_x, tamanho_y, legenda, *colunas):
+
+    #Função para exibir mais de um boxplot por vez.
     
     plt.figure(figsize=(tamanho_x, tamanho_y))
-    sns.boxplot(data = ds[list(colunas)])
+    sns.boxplot(data = dataset[list(colunas)])
 
     plt.xticks(rotation=45,ha='right', va='top')  
     plt.title(titulo)
