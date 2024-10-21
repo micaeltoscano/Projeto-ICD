@@ -31,6 +31,8 @@ def alterar_type(dataset):
     for col in colunas_frequencia:
         dataset[col] = dataset[col].map(mapeamento_frequencia).astype(float)
 
+##############################################################################################
+
 def limpeza(df):
     media_idade = df["Age"].mean()
     df["Age"] = df["Age"].fillna(media_idade)
@@ -59,6 +61,8 @@ def limpeza(df):
     mode_ME = df["Music effects"].mode()[0]
     df["Music effects"] = df["Music effects"].fillna(mode_ME)
 
+##############################################################################################
+
 def traducao(df):
     colunas_traduzidas = [
     "data_e_hora_envio", "idade", "servico_de_streaming_principal",
@@ -82,46 +86,87 @@ def traducao(df):
     3 - Bem frequentemente """
 
     df.columns = colunas_traduzidas
+
+##############################################################################################
+
+def exibir_boxplot(dataset, coluna, orientacao='v', titulo=''):
     
-def exibir_boxplot(dataset, coluna, orientacao, titulo):
+    # Definindo uma cor suave e configurando o estilo do gráfico
+    sns.set(style='whitegrid')  # Estilo clean com fundo claro
+    plt.figure(figsize=(6, 4))  # Tamanho da figura ajustado
 
-    #Função para exibir os bloxplots. ds = dataset, coluna = nome da coluna, orientação = "h" para horizontal e "v" para vertical, titulo = nome do titulo. 
+    # Condições para orientação do boxplot
+    if orientacao == 'h':
+        sns.boxplot(x=dataset[coluna], color='#3498db', linewidth=1)  # Boxplot horizontal com cor azul suave
+        plt.xlabel(coluna, fontsize=14)  # Nome da coluna no eixo X
+        plt.ylabel('')  # Remover rótulo do eixo Y para horizontal
+    elif orientacao == 'v':
+        sns.boxplot(y=dataset[coluna], color='#3498db', linewidth=1)  # Boxplot vertical com cor azul suave
+        plt.ylabel(coluna, fontsize=14)  # Nome da coluna no eixo Y
+        plt.xlabel('')  # Remover rótulo do eixo X para vertical
 
-    if (orientacao == "h"):
-        sns.boxplot(x=dataset[coluna], orient = orientacao)
-        plt.xlabel('') 
+    # Adicionando o título com tamanho ajustado
+    plt.title(titulo, fontsize=16)
 
-    elif (orientacao == "v"):
-        sns.boxplot(y =dataset[coluna], orient= orientacao)
-        plt.ylabel('')
+    # Ajustando os ticks dos eixos
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
 
-    plt.title(titulo)
+    # Exibir o gráfico
     plt.show()
 
-def boxplot_de_varias(dataset, titulo, tamanho_x, tamanho_y, legenda, *colunas):
+##############################################################################################
 
-    #Função para exibir mais de um boxplot por vez.
+def boxplot_de_varias(dataset, titulo='', tamanho_x=10, tamanho_y=6, legenda='', *colunas):
     
-    plt.figure(figsize=(tamanho_x, tamanho_y))
-    sns.boxplot(data = dataset[list(colunas)])
+    # Definindo o estilo clean com grades e tamanho da figura
+    sns.set(style='whitegrid')
+    plt.figure(figsize=(tamanho_x, tamanho_y))  # Ajusta o tamanho da figura
 
-    plt.xticks(rotation=45,ha='right', va='top')  
-    plt.title(titulo)
-    plt.figtext(0.93, 0.5, legenda, va='center', ha='left', fontsize=10)
+    # Criação dos boxplots múltiplos com cores suaves
+    sns.boxplot(data=dataset[list(colunas)], palette='viridis', linewidth=1)  # Paleta 'coolwarm' para variar entre azul e vermelho
+
+    # Melhorias nas labels e título
+    plt.xticks(rotation=45, ha='right', va='top', fontsize=12)  # Rotações dos nomes das colunas para maior clareza
+    plt.title(titulo, fontsize=16)  # Título com fonte maior e negrito
+
+    # Adicionando a legenda ao lado direito
+    plt.figtext(0.93, 0.5, legenda, va='center', ha='left', fontsize=10, bbox=dict(facecolor='none', edgecolor='gray'))
+
+    # Ajustando os ticks e visibilidade
+    plt.yticks(fontsize=12)
+    plt.grid(True, linestyle='--', alpha=0.6)  # Grade suave para melhorar a leitura dos valores
+
+    # Exibindo o gráfico
     plt.show()
 
-def grafico_barra(df, coluna, titulo, x_label, y_label, legenda ):
+##############################################################################################
+
+def grafico_barra(df, coluna, titulo, x_label, y_label, legenda):
     plt.figure(figsize=(12, 6))
-    df.set_index(coluna).plot(kind='bar', stacked=False, alpha=0.75)
     
-    # Adicionando título e rótulos
-    plt.title(titulo)
-    plt.xlabel(x_label)
-    plt.ylabel(y_label)
-    plt.xticks(rotation=45)  # Rotaciona os rótulos do eixo x
-    plt.legend(title= legenda)
+    # Plotando o gráfico de barras
+    ax = df.set_index(coluna).plot(kind='bar', stacked=False, alpha=0.85, colormap='viridis', legend=False)
     
+    # Ajustando título e rótulos com tamanhos de fonte maiores
+    plt.title(titulo, fontsize=16, weight='bold')
+    plt.xlabel(x_label, fontsize=12)
+    plt.ylabel(y_label, fontsize=12)
+    plt.xticks(rotation=45, ha='right', fontsize=10)  # Rotacionando os rótulos do eixo X
+    plt.yticks(fontsize=10)
+    
+    # Adicionando grade leve e sutil
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+    # Ajustando a legenda fora do gráfico
+    plt.legend(title=legenda, title_fontsize=12, fontsize=10, loc='upper right', bbox_to_anchor=(1.15, 1))
+    
+    # Melhorando layout para não cortar a exibição
+    plt.tight_layout()
+    
+    # Exibindo o gráfico
     plt.show()
+
 
 
 
