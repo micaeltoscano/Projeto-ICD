@@ -1,0 +1,34 @@
+Nome da Coluna,Tipo de Dado,Descrição
+Timestamp,datetime,Registro de data e hora da coleta.
+Age,int,Idade.
+Primary streaming service,object,Serviço de streaming musical principal.
+Hours per day,float,Média de horas ouvidas diariamente.
+While working,object,Se escuta música enquanto trabalha.
+Instrumentalist,object,Se toca um instrumento musical.
+Composer,object,Se é compositor.
+Fav genre,object,Gênero musical favorito.
+Exploratory,object,Se costuma explorar novos gêneros musicais.
+Foreign languages,object,Se ouve músicas em línguas estrangeiras.
+BPM,int,Batidas por minuto da música favorita.
+Frequency [Classical],object,Frequência de escuta de música clássica.
+Frequency [Country],object,Frequência de escuta de música country.
+Frequency [EDM],object,Frequência de escuta de música eletrônica.
+Frequency [Folk],object,Frequência de escuta de música folk.
+Frequency [Gospel],object,Frequência de escuta de música gospel.
+Frequency [Hip hop],object,Frequência de escuta de música hip hop.
+Frequency [Jazz],object,Frequência de escuta de música jazz.
+Frequency [K pop],object,Frequência de escuta de música K-pop.
+Frequency [Latin],object,Frequência de escuta de música latina.
+Frequency [Lofi],object,Frequência de escuta de música lofi.
+Frequency [Metal],object,Frequência de escuta de música metal.
+Frequency [Pop],object,Frequência de escuta de música pop.
+Frequency [R&B],object,Frequência de escuta de música R&B.
+Frequency [Rap],object,Frequência de escuta de música rap.
+Frequency [Rock],object,Frequência de escuta de música rock.
+Frequency [Video game music],object,Frequência de escuta de música de videogame.
+Anxiety,float,Nível de ansiedade do respondente.
+Depression,float,Nível de depressão do respondente.
+Insomnia,float,Nível de insônia do respondente.
+OCD,float,Nível de TOC do respondente.
+Music effects,object,Efeitos percebidos da música na vida.
+Permissions,object,Indica se o respondente deu permissão.
